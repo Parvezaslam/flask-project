@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+{% extends 'dashboard.html' %}
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+  <ul class=flashes>
+  {% for message in messages %}
+    <center><p>{{ message }}</p></center>
+  {% endfor %}
+  </ul>
+{% endif %}
+{% endwith %}
+<body>
+    <h1>Notes</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>FileID</th>
+                <th>filename</th>
+                <th>Created At</th>
+                <th>link</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Example rows (to be replaced by backend data) -->
+            {% for i in filedata %} 
+            <tr>
+                <td>{{i[0]}}</td>
+                <td>{{i[1]}}</td>
+                <td>{{i[2]}}</td>
+                <td><a href="{{url_for('viewfiles',fid=i[0])}}">View</a></td>
+                <td><a href="{{url_for('downloadfiles',fid=i[0])}}">downlode</a></td>
+                <td><a href="{{url_for('delete',fid=i[0])}}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endblock content %}
+</body>
+</html>

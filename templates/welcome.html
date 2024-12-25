@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://elizabethbutlermd.com/wp-content/uploads/2023/03/Calmer-Notes-Personal-Knowledge-Management-Banner-1024x576.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+        }
+        h1 {
+            color:rgb(224, 241, 245);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            background-color: transparent;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            font-size: 1rem;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Simple Notes Management  system </h1>
+        <a href="{{url_for('create')}}"><button>Create</button></a>
+        <a href="{{url_for('login')}}"><button>Login</button></a>
+    </center>
+</body>
+</html>

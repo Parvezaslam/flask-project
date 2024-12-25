@@ -1,0 +1,113 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addnotes</title>
+    <style>
+        .banner{
+    background-image: url("https://img.freepik.com/premium-photo/abstract-blurred-empty-university-library-interior-space-use-background-education-concepts_697880-101.jpg"); 
+    background-position: center;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+.col-12{
+    margin-left: 35%;
+}
+.hhead{
+    padding-top: 5%;
+    padding-bottom: 5%;
+    background-color: transparent;
+    background-image:url("https://static.vecteezy.com/system/resources/previews/008/350/478/original/pastel-color-gradient-background-free-vector.jpg");
+    width:30%;
+    height: 50%;
+    background-size: cover;
+    border-radius: 5%;
+}
+.formy{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 30%;
+
+}
+.formy label{
+   color: black;  
+   font-size: 30px;
+   font-weight: 200px;
+   border-radius: 2px;
+
+}
+.formy input{
+   padding: 2%;
+   border-radius: 5px;
+   margin-bottom: 1.5%;
+   margin-top: 0.6%;
+   width: 90%;
+}
+.btn{
+    border-color: white;
+    background-color: white;
+    color: black;
+    border-radius: 7px;
+    width: 50%;
+    padding: 2%;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    font-size: 20px;
+    margin-left: 23%;
+}
+.btn:hover{
+    background-color: #e67d8e;
+    color: white;
+    border: 1px solid #e85b73
+}
+    </style>
+</head>
+<body>
+    <section class="banner">
+        <div class="container">
+         <div class="row">
+           <div class="col-12 hhead text-center">
+            <form class="formy" method="POST">
+                <label>Enter s.no.</label>
+                <input type="number" name="id"/>
+                <label>Enter Book-name</label>   
+                <input type="text" name="name"/>
+                <label>Enter Author-name</label>
+                <input type="text" name="name"/>  
+                <button class="btn">submit</button>
+            </form>     
+           </div>
+         </div>
+        </div>
+   </section>  
+</body>
+</html> -->
+
+
+{% extends 'dashboard.html' %}
+{% block adress %}
+    <title>Addnotes</title>
+{% endblock %}
+{% block content %}
+
+    <section class="banner">
+        <div class="container">
+         <div class="row">
+           <div class="col-12 hhead text-center">
+            <form class="formy" method="POST">
+                <label>Enter s.no.</label>
+                <input type="number" name="title"/>
+                <label>Enter Book-name</label>   
+                <input type="text" name="description"/>
+                <label>Enter Author-name</label>
+                <input type="text" name="name"/>  
+                <button class="btn">submit</button>
+            </form>     
+           </div>
+         </div>
+        </div>
+   </section>  
+{% endblock %}

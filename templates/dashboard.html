@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('https://tse2.mm.bing.net/th?id=OIP.iQ6H9MnQotJpTl0ALihwBAHaEo&pid=Api&P=0&h=180') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+        .navbar {
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .navbar a, .navbar .dropbtn {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+        .navbar a:hover, .dropdown:hover .dropbtn {
+            background-color: #575757;
+        }
+        .navbar .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+        .navbar .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color:rgba(0, 0, 0, 0.9);
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        .navbar .dropdown-content a {
+            color: #f2f2f2;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .navbar .dropdown-content a:hover {
+            background-color: #575757;
+        }
+        .navbar .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 50px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+        .search-box {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .search-box input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px 0 0 4px;
+            font-size: 16px;
+        }
+        .search-box button {
+            padding: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 0 4px 4px 0;
+        }
+        .search-box button:hover {
+            background-color: #575757;
+        }
+    </style>
+    {% block addcss %}{% endblock %}
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <h2>{{ message }}</h2>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<body>
+    <div class="navbar">
+        <a href="{{url_for('dashboard')}}">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Notes 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="{{url_for('addnotes')}}">Create Notes</a>
+                <a href="{{url_for('viewallnotes')}}">View All Notes</a>
+                <a href="{{url_for('getexceldata')}}">Get Excel Data</a>
+                <a href="{{url_for('search')}}">Get search notes</a>
+
+            </div>
+        </div> 
+        <div class="dropdown">
+            <button class="dropbtn">Files 
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="{{url_for('uploadfiles')}}">Upload</a>
+                <a href="{{url_for('allfiles')}}">View All Files</a>
+            </div>
+        </div> 
+        <a href="logout">Logout</a>
+    </div>
+
+    <div class="container">
+        <h1>Welcome to the Simple Notes Management System</h1>
+        <form action="{{url_for('search')}}" method="POST">
+            <div class="search-box">
+                <input type="text" placeholder="Search notes..." name="sname">
+                <button>Search</button>
+            </div>
+        </form>
+    </div>
+</body>
+{% block content %}{% endblock %}
+{% if sdata %}
+<table border="1px">
+    <thead>
+        <tr>
+        <th>notes id</th>
+        <th>title</th>
+        <th>created at</th>
+        <th>View</th>
+        <th>delete</th>
+        <th>update</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in sdata %}
+        <tr>
+            <td>{{i[0]}}</td>
+            <td>{{i[1]}}</td>
+            <td>{{i[2]}}</td>
+            <td><a href="{{url_for('viewnotes',nid=i[0])}}">View</a></td>
+            <td><a href="{{url_for('deletenotes',nid=i[0])}}">delete</a></td>
+            <td><a href="{{url_for('updatenotes',nid=i[0])}}">update</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+</html>

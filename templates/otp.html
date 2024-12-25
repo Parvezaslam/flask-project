@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter OTP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            color: #333;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        form {
+            margin: 0 auto;
+        }
+        input[type="text"] {
+            width: 80%;
+            max-width: 300px;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            color: white;
+            background-color: #28a745;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <class=flashes>
+    {% for message in messages %}
+      <center>{{ message }}</center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<body>
+    <h1>Enter OTP</h1>
+    <form method="POST">
+        <input type="text" name="otp" placeholder="OTP" required>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
